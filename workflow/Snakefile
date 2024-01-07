@@ -1,0 +1,29 @@
+import glob
+from snakemake.utils import min_version
+from snakemake.utils import validate
+
+##### set minimum snakemake version #####
+min_version("7.25.0")
+
+
+####TODO validate config ############
+configfile: "config/config.yaml"
+validate(config,schema="schemas/config.schema.yaml")
+
+
+
+report: "report/workflow.rst"
+#####* load rules#####
+include: "rules/gene_windows.smk"
+include: "rules/gene_intersected_with_chr.smk"
+include: "rules/geneBody.smk"
+include: "rules/geneDownstream.smk"
+include: "rules/geneUpstream.smk"
+
+
+#####* target rules ########
+rule all:
+    input:
+        #* finally result 
+        gene_all_windows='{}_windows_Id.bed'.format(config['outPutPrefix']),
+        

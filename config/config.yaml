@@ -1,0 +1,8 @@
+geneBed: 'test/gene.bed'
+# samtools index of reference
+Chrlength: 'test/Chr.fa.fai'
+outPutPrefix: 'results/test'
+params:
+    geneWindowCount: 15
+    flankLength: 5000
+    flankWindowCount: 25

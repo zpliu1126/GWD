@@ -1,0 +1,33 @@
+$schema: "http://json-schema.org/draft-06/schema#"
+description: snakemake configuration file
+
+type: object
+
+properties:
+    geneBed:
+        type: string
+    Chrlength:
+        type: string
+    queryBedFile:
+        type: string
+    outPutPrefix:
+        type: string
+    params:
+        type: object
+        properties:
+            geneWindowCount:
+                type: integer
+            flankLength:
+                type: integer
+            flankWindowCount:
+                type: integer
+        required:
+            - geneWindowCount
+            - flankLength
+            - flankWindowCount
+required:
+#   - geneBed
+  - Chrlength
+#   - queryBedFile
+#   - outPutPrefix
+#   - params
